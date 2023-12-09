@@ -16,6 +16,8 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+DOMAIN = "localhost:5173"
+SITE_NAME = "ITHUB"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -88,8 +90,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'ithub',
         'USER': 'root',
-        'PASSWORD': '123987123987',
-        'HOST': 'database-1.c17ckn1j9kmd.us-west-2.rds.amazonaws.com',
+        'PASSWORD': '123987MySQL_',
+        'HOST': '127.0.0.1',
         'PORT': 3306
     }
 }
@@ -165,17 +167,21 @@ DJOSER = {
     'USERNAME_CHANGED_EMAIL_CONFIRMATION': True,
     'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
     'SEND_CONFIRMATION_EMAIL': True,
+    'SEND_ACTIVATION_EMAIL': True,
     'SET_PASSWORD_RETYPE': True,
     'USERNAME_RESET_CONFIRM_URL': 'email/reset/confirm/{uid}/{token}',
     'PASSWORD_RESET_CONFIRM_URL': 'password/reset/confirm/{uid}/{token}',
     'ACTIVATION_URL': 'activate/{uid}/{token}',
-    'SEND_ACTIVATION_EMAIL': True,
     'SERIALIZERS': {
         'user_create': 'user_authentication.serializers.UserCreateSerializer',
         'user': 'user_authentication.serializers.UserCreateSerializer',
         'current_user': 'accounts.serializers.UserCreateSerializer',
         'user_delete': 'djoser.serializers.UserDeleteSerializer',
-    }
+    },
+    'EMAIL': {
+        'activation': 'user_authentication.email.ActivationEmail',
+        'confirmation': 'user_authentication.email.ConfirmationEmail',
+    },
 }
 
 AUTH_USER_MODEL = 'user_authentication.UserAccount'
