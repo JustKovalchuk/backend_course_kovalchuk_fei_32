@@ -14,7 +14,9 @@ from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent
+MEDIA_URL = "/"
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_root")
 
 DOMAIN = "localhost:5173"
 SITE_NAME = "ITHUB"
@@ -42,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'user_authentication',
+    'courses',
     'rest_framework',
     'djoser',
     'rest_framework_simplejwt',
