@@ -21,6 +21,7 @@ MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_root")
 DOMAIN = "localhost:5173"
 SITE_NAME = "ITHUB"
 
+# CSRF_TRUSTED_ORIGINS = ['https://127.0.0.1:5173', 'https://localhost:5173', 'http://localhost:5173', 'http://127.0.0.1:5173']
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -56,7 +57,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',

@@ -10,19 +10,22 @@ class CourseInfo(models.Model):
     url_text = models.TextField()
 
     def __str__(self):
-        return self.title
+        return str(self.id) + ". " + str(self.title)
 
 
 class Section(models.Model):
     title = models.CharField(max_length=255)
+    order = models.IntegerField(default=0)
     course = models.ForeignKey(CourseInfo, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.title
+        return str(CourseInfo.objects.filter(id=self.course.id)[0]) + "/" + str(self.title)
 
 
 class SectionElement(models.Model):
     title = models.CharField(max_length=255)
+    description = models.TextField(default="")
+    order = models.IntegerField(default=0)
     duration = models.IntegerField(default=5)
     section = models.ForeignKey(Section, on_delete=models.CASCADE)
 
