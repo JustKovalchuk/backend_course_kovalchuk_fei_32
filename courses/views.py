@@ -64,17 +64,7 @@ def get_course_section_elements(request: HttpRequest):
         body = json.loads(body_unicode)
 
         section_obj = Section.objects.get(id=body["sectionId"])
-        # section_serializer = SectionSerializer(section_obj, many=True)
-        # print("section_obj", section_obj)
         section_elements = SectionElement.objects.filter(section=section_obj).order_by('order')
-        # section_element_serializer = SectionElementSerializer(section_elements, many=True)
-        # # print("section_elements", section_elements)
-        # combined_data = {
-        #     'authors': section_serializer.data,
-        #     'books': section_element_serializer.data,
-        # }
-        #
-        # print("result", combined_data)
 
         serialized_element = serialize('json', section_elements)
         return HttpResponse(serialized_element)
