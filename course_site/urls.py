@@ -7,6 +7,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
-    path('courses/', include('courses.urls'))
-    # path('', include('user_authentication.urls')),
+    path('courses/', include('courses.urls')),
+    path('users/', include('user_authentication.urls')),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
